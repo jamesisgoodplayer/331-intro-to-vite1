@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Event } from '@/type'
+import type { Event } from '@/types'
 
 defineProps<{
   event: Event
@@ -23,7 +23,7 @@ defineProps<{
 }
 
 .event-details:hover {
-   transform: scale(1.01); /* 添加放大效果 */
-   box-shadow: 0 3px 12px 0 rgba(0,0,0,0.2); /* 添加阴影效果 */
+   transform: scale(1.01); 
+   box-shadow: 0 3px 12px 0 rgba(0,0,0,0.2); 
 }
 </style>
