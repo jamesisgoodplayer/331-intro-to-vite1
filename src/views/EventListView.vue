@@ -33,9 +33,9 @@ const page = computed(()=>props.page)
 
 onMounted(()=>{
   fetchEvents(props.page, props.pageSize);
- 
 })
 function fetchEvents(page: number, size: number) {
+
   EventService.getEvents(size, page)
     .then(response => {
       events.value = response.data;
