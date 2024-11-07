@@ -4,6 +4,7 @@ import { useMessageStore } from '@/stores/message';
 import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { Analytics } from "@vercel/analytics/react"
 
 const store = useMessageStore();
 const { message } = storeToRefs(store);
@@ -53,6 +54,7 @@ watch(pageSize, (newSize) => {
 
       </div>
     </header>
+    <Analytics />
     <RouterView />
   </div>
 </template>
