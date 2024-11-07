@@ -28,27 +28,29 @@ watch(pageSize, (newSize) => {
 
 
 <template>
-  <div id="layout">
+  <div class="text-center font-sans text-gray-700 antialias">
     <header>
-      <div id="flashMessage" v-if="message">
+      <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
       </div>
+      <h1>Deploy with Vercel</h1>
       <div class="wrapper">
-        <nav style="display: flex; flex-direction: column; align-items: center;"> 
-          <div style="display: flex; justify-content: center; margin-bottom: 10px;">
-          <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
-          <RouterLink :to="{ name: 'about' }">About</RouterLink> |
-          <RouterLink :to="{ name: 'student' }">Student</RouterLink> 
-          </div>
-          <div style="display: flex; align-items: center;">
-            <label for="pageSize" style="margin-right: 10px;">Items per page:</label>
-            <select id="pageSize" v-model="pageSize">
-              <option v-for="size in pageSizes" :key="size" :value="size">
-                {{ size }}
-              </option>
-            </select>
-          </div>
-        </nav>
+        <nav class="py-6" style="display: flex; flex-direction: column; align-items: center;">
+  <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+    <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'event-list-view' }">Event</RouterLink> |
+    <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">About</RouterLink> |
+    <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'student' }">Student</RouterLink>
+  </div>
+  <div style="display: flex; align-items: center;">
+    <label for="pageSize" style="margin-right: 10px;">Items per page:</label>
+    <select id="pageSize" v-model="pageSize">
+      <option v-for="size in pageSizes" :key="size" :value="size">
+        {{ size }}
+      </option>
+    </select>
+  </div>
+</nav>
+
       </div>
     </header>
     <RouterView />
@@ -56,13 +58,7 @@ watch(pageSize, (newSize) => {
 </template>
 
 <style >
-#layout {
-  font-family: Avenir,Helventica,Arial,sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+
 nav {
   padding:30px;
 }
@@ -120,17 +116,7 @@ select:hover {
   border-color: #b94248; /* Change border color when hovered */
 }
 
-@keyframes yellofade{
-  from{
-    background-color: yellow;
-  }
-  to{
-    background-color: transparent;
-  }
-}
-#flashMessage{
-  animation: yellofade 3s ease-in-out;
-}
+
 
 /* NProgress */
 #nprogress {
