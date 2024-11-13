@@ -1,4 +1,4 @@
-export interface Event{
+export interface EventList{
     id: number;
     category: string;
     title: string;
@@ -13,5 +13,28 @@ export interface MessageState{
     message:string;
 }
 export interface EventState{
-    event: Event | null;
+    event: EventList | null;
+}
+export interface OrganizerState{
+    organizer: Organizer | null;
+}
+export interface Organizer{
+    id: number;
+    name: string;
+    address: string;
+}
+export interface EventItem{
+    id: number;
+    category: string;
+    title: string;
+    description: string;
+    location: string;
+    date: string;
+    time: string;
+    organizer: string;
+}
+export interface OrganizerItem{
+    id: number;
+    name: string;
+    address: string;
 }

@@ -3,9 +3,9 @@ import { RouterLink } from 'vue-router';
 import EventCard from '@/components/EventCard.vue'
 import EventDetails from '@/components/EventDetails.vue'
 import EventService from '@/services/EventService';
-import  { type Event } from '@/types'
+import  { type EventList } from '@/types'
 import { ref ,onMounted,computed,watchEffect} from 'vue'
-const events = ref<Event[] | null>(null)
+const events = ref<EventList[] | null>(null)
 
 const totalEvents = ref(0)
 

@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { toRefs } from 'vue'
-import  {type EventList} from '@/types'
+import  {type Organizer} from '@/types'
 import { useRouter } from 'vue-router'
 import { useMessageStore } from '@/stores/message';
 const props = defineProps<{
-  event: EventList
+  organizer: Organizer
   id: string
 }>()
 const router = useRouter()
 const store = useMessageStore()
 //eslint-disable-next-line @typescript-eslint/no-unused-vars
-const { event } = toRefs(props)
+const { organizer } = toRefs(props)
 const register = () => {
-  store.updateMessage('You are successfully registered for' + props.event.title)
+  store.updateMessage('You are successfully registered for' + props.organizer.name)
   setTimeout(() => {
     store.resetMessage()
   },3000)
-  router.push({ name:'event-detail-view', params: {id:props.event.id} })
+  router.push({ name:'event-detail-view', params: {id:props.organizer.id} })
 }
 </script>
 <template>

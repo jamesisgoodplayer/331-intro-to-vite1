@@ -1,8 +1,8 @@
 <script setup lang="ts">
 //import { ref } from 'vue'
-import  {type Event} from '@/types'
+import  {type EventList} from '@/types'
 defineProps<{
-  event: Event
+  event: EventList
 }>()
 //const event = ref({
   //id:5928101,
@@ -19,9 +19,10 @@ defineProps<{
 
 <template>
   <RouterLink class="event-link" :to="{ name: 'event-detail-view',params:{id: event.id }}">
-    <div class="cursor-pointer border border-gray-600 p-[20px] w-[250px] mb-[18px] hover:scale-101 hover:shadow-sp">
+    <div class="cursor-pointer border border-gray-600 p-[20px] w-[250px] mb-[18px] 
+hover:scale-101 hover:shadow-sp"> 
       <h2>{{ event.title }}</h2>
-      <span>@{{ event.time }} on {{ event.date }}</span>>
+      <span>{{ event.category }} @ {{ event.location }}</span> 
     </div>
   </RouterLink>
 </template>

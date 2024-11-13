@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Event } from '@/types'
+import type { EventList } from '@/types'
 
 defineProps<{
-  event: Event
+  event: EventList
 }>()
 </script>
 

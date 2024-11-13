@@ -9,7 +9,7 @@ import { useRoute, useRouter } from 'vue-router';
 const store = useMessageStore();
 const { message } = storeToRefs(store);
 
-const pageSizes = [1, 2, 3, 5]; // Available options for the number of items per page
+const pageSizes = [1, 2, 3, 4, 5, 6,10, 20, 30, 40, 50, 100]; // Available options for the number of items per page
 const pageSize = ref(1); // Default number of items per page is set to 1
 
 const route = useRoute(); // Access the current route
@@ -39,9 +39,48 @@ watch(pageSize, (newSize) => {
       <div class="wrapper">
         <nav class="py-6" style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; margin-bottom: 10px;">
-    <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'event-list-view' }">Event</RouterLink> |
-    <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">About</RouterLink> |
-    <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'student' }">Student</RouterLink>
+    
+<RouterLink 
+           class="font-bold text-gray-700" 
+           exact-active-class="text-green-500" 
+           :to="{ name: 'event-list-view' }" 
+           >Event</RouterLink 
+         > 
+         | 
+         <RouterLink 
+           class="font-bold text-gray-700" 
+           exact-active-class="text-green-500" 
+           :to="{ name: 'about' }" 
+           >About</RouterLink 
+         > 
+         | 
+         <RouterLink 
+           class="font-bold text-gray-700" 
+           exact-active-class="text-green-500" 
+           :to="{ name: 'organizer-list' }" 
+           >Organizer</RouterLink 
+         > 
+         |
+         <RouterLink 
+           class="font-bold text-gray-700" 
+           exact-active-class="text-green-500" 
+           :to="{ name: 'student' }" 
+           >Student</RouterLink 
+         > 
+         |
+         <RouterLink 
+           class="font-bold text-gray-700" 
+           exact-active-class="text-green-500" 
+           :to="{ name: 'add-event' }" 
+           >New Event</RouterLink 
+         > 
+         |
+         <RouterLink 
+           class="font-bold text-gray-700" 
+           exact-active-class="text-green-500" 
+           :to="{ name: 'add-organizer' }" 
+           >New organizer</RouterLink 
+         > 
   </div>
   <div style="display: flex; align-items: center;">
     <label for="pageSize" style="margin-right: 10px;">Items per page:</label>

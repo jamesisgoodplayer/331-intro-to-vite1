@@ -11,14 +11,20 @@ import NetWorkErrorView from '@/views/NetWorkErrorView.vue'
 import nProgress from 'nprogress'
 import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
+import OrganizerListView from '@/views/OrganizerListView.vue'
+import AddEventView from '@/views/EventFormView.vue'
+import AddOrganizerView from '@/views/OrganizerFormView.vue'
+import OrganiezrLayoutView from '@/views/organizer/LayoutView.vue'
+import { useOrganizerStore } from '@/stores/organizer'
+import OrganizerService from '@/services/OrganizerService'
+import OrganizerDetailView from '@/views/organizer/DetailView.vue'
+import OrganizerRegisterView from '@/views/organizer/RegisterView.vue'
+import OrganizerEditView from '@/views/organizer/EditView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    {
-      path: '/',
-      redirect: { name: 'event-list-view' }
-    },
+  
     {
       path: '/event-list-view',
       name: 'event-list-view',
@@ -53,6 +59,7 @@ const router = createRouter({
           })
       },
       
+      
       children: [
         {
           path: '',
@@ -75,6 +82,62 @@ const router = createRouter({
       ]
     },
     {
+      path: '/organizer-list',
+      name: 'organizer-list',
+      component:OrganizerListView,
+      props: (route) => ({
+        page: Number(route.query.page) || 1,
+        pageSize: Number(route.query.pageSize) || 1
+      })
+    },
+    {
+      path: '/organizer/:id',
+      name: 'organizer-layout-view',
+      component: OrganiezrLayoutView,
+      props: true,
+      beforeEnter: (to) => {
+        const id = parseInt(to.params.id as string)
+        const organizerStore = useOrganizerStore()
+        return OrganizerService.getOrganizer(id)
+          .then((response) => {
+            // need to setup the data for the event
+            organizerStore.setOrganizer(response.data)
+          })
+          .catch((error) => {
+            if (error.response && error.response.status === 404) {
+              return {
+                name: '404-resource-view',
+                params: { resource: 'organizer' }
+              }
+            } else {
+              return { name: 'network-error-view' }
+            }
+          })
+      },
+      
+      
+      children: [
+        {
+          path: '',
+          name: 'organizer-detail-view',
+          component: OrganizerDetailView,
+          props: true
+        },
+        {
+          path: 'register',
+          name: 'organizer-register-view',
+          component: OrganizerRegisterView,
+          props: true
+        },
+        {
+          path: 'edit',
+          name: 'organizer-edit-view',
+          component: OrganizerEditView,
+          props: true
+        }
+      ]
+    },
+    {
       path: '/about',
       name: 'about',
       component:AboutView
@@ -83,6 +146,16 @@ const router = createRouter({
       path: '/student',
       name:'student',
       component: StudentListView
+    },
+    {
+      path:'/add-event',
+      name: 'add-event',
+      component: AddEventView,
+    },
+    {
+      path:'/add-organizer',
+      name: 'add-organizer',
+      component: AddOrganizerView,
     },
     {
       path: '/404/:resource',
