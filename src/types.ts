@@ -15,13 +15,10 @@ export interface MessageState{
 export interface EventState{
     event: EventList | null;
 }
-export interface OrganizerState{
-    organizer: Organizer | null;
-}
+
 export interface Organizer{
     id: number;
     name: string;
-    address: string;
 }
 export interface EventItem{
     id: number;
@@ -32,9 +29,4 @@ export interface EventItem{
     date: string;
     time: string;
     organizer: string;
-}
-export interface OrganizerItem{
-    id: number;
-    name: string;
-    address: string;
 }
