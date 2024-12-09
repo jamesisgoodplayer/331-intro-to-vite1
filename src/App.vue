@@ -57,13 +57,6 @@ watch(pageSize, (newSize) => {
          <RouterLink 
            class="font-bold text-gray-700" 
            exact-active-class="text-green-500" 
-           :to="{ name: 'organizer-list' }" 
-           >Organizer</RouterLink 
-         > 
-         |
-         <RouterLink 
-           class="font-bold text-gray-700" 
-           exact-active-class="text-green-500" 
            :to="{ name: 'student' }" 
            >Student</RouterLink 
          > 
@@ -74,13 +67,8 @@ watch(pageSize, (newSize) => {
            :to="{ name: 'add-event' }" 
            >New Event</RouterLink 
          > 
-         |
-         <RouterLink 
-           class="font-bold text-gray-700" 
-           exact-active-class="text-green-500" 
-           :to="{ name: 'add-organizer' }" 
-           >New organizer</RouterLink 
-         > 
+         
+        
   </div>
   <div style="display: flex; align-items: center;">
     <label for="pageSize" style="margin-right: 10px;">Items per page:</label>
